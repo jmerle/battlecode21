@@ -12,7 +12,7 @@ import Controls from './main/controls';
 
 import { Stats, Console, MatchQueue, Profiler } from './sidebar/index';
 import { GameArea } from './gamearea/index';
-import { MapEditor } from './mapeditor/index';
+//import { MapEditor } from './mapeditor/index';
 
 import WebSocketListener from './main/websocket';
 import ScaffoldCommunicator from './main/scaffold';
@@ -55,7 +55,7 @@ export default class Client {
   controls: Controls; // Upper controls bar
   sidebar: Sidebar; // Sidebar
   stats: Stats;
-  mapeditor: MapEditor;
+  //mapeditor: MapEditor;
   gamearea: GameArea; // Inner game area
   console: Console; // Console to display logs
   profiler: Profiler;
@@ -127,7 +127,7 @@ export default class Client {
     this.sidebar = new Sidebar(this.conf, this.imgs, this.runner, onkeydownControls);
     this.stats = this.sidebar.stats;
     this.console = this.sidebar.console;
-    this.mapeditor = this.sidebar.mapeditor;
+    //this.mapeditor = this.sidebar.mapeditor;
     this.matchqueue = this.sidebar.matchqueue;
     this.profiler = this.sidebar.profiler;
     return this.sidebar.div;
@@ -137,7 +137,7 @@ export default class Client {
    * Loads canvas to display game world.
    */
   private loadGameArea() {
-    this.gamearea = new GameArea(this.conf, this.imgs, this.mapeditor.canvas, this.profiler.iframe);
+    this.gamearea = new GameArea(this.conf, this.imgs, this.profiler.iframe);
     this.sidebar.cb = () => {
       this.gamearea.setCanvas();
       this.controls.setControls();

@@ -14,18 +14,18 @@ export default class GameArea {
   readonly canvas: HTMLCanvasElement;
   readonly splashDiv: HTMLDivElement;
   private readonly wrapper: HTMLDivElement;
-  private readonly mapEditorCanvas: HTMLCanvasElement;
+  //private readonly mapEditorCanvas: HTMLCanvasElement;
   private readonly profilerIFrame: HTMLIFrameElement;
 
   // Options
   private readonly conf: Config;
 
-  constructor(conf: Config, images: AllImages, mapEditorCanvas: HTMLCanvasElement, profilerIFrame: HTMLIFrameElement) {
+  constructor(conf: Config, images: AllImages, profilerIFrame: HTMLIFrameElement) {
     this.div = document.createElement("div");
     this.div.id = "gamearea";
     this.conf = conf;
     this.images = images;
-    this.mapEditorCanvas = mapEditorCanvas;
+    //this.mapEditorCanvas = mapEditorCanvas;
     this.profilerIFrame = profilerIFrame;
 
     // Create the canvas
@@ -128,9 +128,9 @@ export default class GameArea {
       window.onresize = function() {};
     } else {
       switch (mode) {
-        case Mode.MAPEDITOR:
-          this.wrapper.appendChild(this.mapEditorCanvas);
-          break;
+       // case Mode.MAPEDITOR:
+         // this.wrapper.appendChild(this.mapEditorCanvas);
+         // break;
         case Mode.PROFILER:
           this.wrapper.appendChild(this.profilerIFrame);
           break;

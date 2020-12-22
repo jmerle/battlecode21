@@ -1,5 +1,5 @@
 import {schema} from 'battlecode-playback';
-import {Symmetry} from './mapeditor/index';
+//import {Symmetry} from './mapeditor/index';
 import { net } from 'electron';
 
 // Body types
@@ -122,14 +122,14 @@ export function bodyTypeToString(bodyType: schema.BodyType) {
   }
 }
 
-export function symmetryToString(symmetry: Symmetry) {
-  switch(symmetry) {
-    case Symmetry.ROTATIONAL: return "Rotational";
-    case Symmetry.HORIZONTAL: return "Horizontal";
-    case Symmetry.VERTICAL:   return "Vertical";
-    default:         throw new Error("invalid symmetry");
-  }
-}
+// export function symmetryToString(symmetry: Symmetry) {
+//   switch(symmetry) {
+//     case Symmetry.ROTATIONAL: return "Rotational";
+//     case Symmetry.HORIZONTAL: return "Horizontal";
+//     case Symmetry.VERTICAL:   return "Vertical";
+//     default:         throw new Error("invalid symmetry");
+//   }
+// }
 
 // TODO: fix radius (is this vision that can be toggled in sidebar?)
 // export function radiusFromBodyType(bodyType: schema.BodyType) {
