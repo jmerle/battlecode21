@@ -48,7 +48,7 @@ export default class Runner {
     this.games = [];
 
     // Only listen if run as an app.
-    if (this.conf.websocketURL !== null && process.env.ELECTRON) { //&& process.env.NODE_ENV !== 'development' <- useful to listen even in development.
+    if (this.conf.websocketURL !== null) { //&& process.env.NODE_ENV !== 'development' <- useful to listen even in development.
       this.listener = new WebSocketListener(this.conf.websocketURL,
         this.conf.pollEvery,
         this.conf);
@@ -78,8 +78,8 @@ export default class Runner {
 
     if (this.conf.tournamentMode) {
       this.conf.processLogs = false; // in tournament mode, don't process logs by default
-      this.console.setNotLoggingDiv(this.conf.processLogs);
     }
+    this.console.setNotLoggingDiv();
 
     if (this.conf.matchFileURL) {
       // Load a match file
@@ -481,11 +481,10 @@ export default class Runner {
     if (this.looper) this.looper.die();
 
     this.looper = new Looper(match, meta, this.conf, this.imgs,
-      this.controls, this.stats, this.gamearea, this.console, this.matchqueue);
-
-    if (this.profiler) {
-      this.profiler.load(match);
-    }
+      this.controls, this.stats, this.gamearea, this.console, this.matchqueue, this.profiler);
+    
+ //   if (this.profiler)
+  //    this.profiler.load(match);
   }
 
   readonly onkeydown = (event: KeyboardEvent) => {
